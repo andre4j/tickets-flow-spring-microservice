@@ -1,6 +1,6 @@
 ## Disclaimer ⚠
 
-> Esse projeto está em construção. Esse projeto visa um estudo profundo de Microservice usando Java, Spring, AWS, Doccker, Terraform, Design Patterns e CI/CD.
+> Esse projeto está em construção. Esse projeto visa um estudo profundo de Microservice usando Java, Spring, AWS, Docker, Terraform, Design Patterns e CI/CD.
 
 ### Arquitetura
 
@@ -19,9 +19,10 @@
 #### Tecnologias usadas
 
   * Java
-  * Quarkus
+  * Spring
   * Docker
   * GitHub Actions
+  * Terraform
   * AWS
 
 #### [Primeiro Projeto]()
