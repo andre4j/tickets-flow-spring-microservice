@@ -2,16 +2,16 @@
 
 > Esse projeto está em construção. Esse projeto visa um estudo profundo de Microservice usando Java, Spring, AWS, Docker, Terraform, Design Patterns e CI/CD.
 
+### Wrapper dos projetos Tickets Flow
+
+  Esse projeto é totalmente voltado para a aprendizado, sinta-se a vontade de clona-lo e aprender junto com ele. Esse é um repo reune informações de outros projetos para entendimento de todo o fluxo. 
+
 ### Arquitetura
 
 <p align="center">
 <img src="https://github.com/andre4j/tickets-flow-spring-microservice/blob/main/Microservice_Spring_Architecture.jpg" border="10"/>
-Desenho da arquitetura criada no **Draw.io**
+Desenho da arquitetura criada no <strong>Draw.io</strong>
 </p>
-
-### Wrapper dos projetos Tickets Flow
-
-  Esse projeto é totalmente voltado para a aprendizado, sinta-se a vontade de clona-lo e aprender junto com ele. Esse é um repo reune informações de outros projetos para entendimento de todo o fluxo. 
 
 ### Problema
 
@@ -31,13 +31,15 @@ Desenho da arquitetura criada no **Draw.io**
   * [AWS](https://docs.aws.amazon.com/)
   * [LocalStack](https://docs.localstack.cloud/)
 
+---
+
 #### [Primeiro Projeto](https://github.com/andre4j/tickets-flow-spring-microservice-worker-1)
 
  Esse projeto consiste em fazer toda a regra de negócio anterior, do qual o time não tem conhecimento. Aqui, simulamos um **Worker** que cria todo o **Ticket** e envia para uma fila do **SQS (all-tickets)**. 
 
  > Estamos simulando um fluxo onde temos o **Primeiro Projeto** como um microservice que não temos conhecimento, que é algo normal em uma empresa, não conhecer tudo da arquitetura, principalmente se estamos trabalhando em uma empresa grande com arquitetura de microservice. Esse **Primeiro Projeto**, é necessário a sua criação para fazer sentido na representação dos outros.
 
---------------------------------------------------------------------------------------------------------------------
+---
 
 #### Segundo Projeto
 
