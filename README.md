@@ -1,4 +1,4 @@
-## Disclaimer ⚠
+## Disclaimer ⚠️
 
 > Esse projeto está em construção. Esse projeto visa um estudo profundo de Microservice usando Java, Spring, AWS, Docker, Terraform, Design Patterns e CI/CD.
 
@@ -6,26 +6,32 @@
 
 <p align="center">
 <img src="https://github.com/andre4j/tickets-flow-spring-microservice/blob/main/Microservice_Spring_Architecture.jpg" border="10"/>
+Desenho da arquitetura criada no **Draw.io**
 </p>
+
+### Wrapper dos projetos Tickets Flow
+
+  Esse projeto é totalmente voltado para a aprendizado, sinta-se a vontade de clona-lo e aprender junto com ele. Esse é um repo reune informações de outros projetos para entendimento de todo o fluxo. 
 
 ### Problema
 
-  Vamos supor que estivessemos trabalhando em uma empresa que trabalha com gerenciamento de tickets para diversos cinemas. Trabalhamos em uma equipe "X" onde fazemos parte de um pequeno fluxo, dentre vários na arquitetura da empresa. Chegou uma demanda, que temos que gerenciar **Tickets** para mensurarmos a qualidade de processamentos dos nossos processos e verificar se estamos tendo algum problema no processamento do mesmo. Nosso **Product Owner** nos avisou, que alguns **Tickets** estão chegando com informações faltantes, e precisamos validar e retirar eles do fluxo de **Tickets**. **Tickets** que estão tudo certo, devem ser enviados para um **Message Broker** para que eles possam ser validados para o setor de **Business** da empresa.
+  Vamos supor que estivessemos trabalhando em uma empresa que trabalha com gerenciamento de tickets para diversos cinemas. Trabalhamos na equipe denominada **"Starfield"** onde fazemos parte de um pequeno fluxo, dentre vários na arquitetura da empresa, relacionado a **Tickets**. Chegou uma demanda, que temos que gerenciar **Tickets** para mensurarmos a qualidade de processamentos dos nossos processos e verificar se estamos tendo algum problema no processamento do mesmo. Nosso **Product Owner** nos avisou, que alguns **Tickets** estão chegando com informações faltantes, e precisamos validar e retirar **Tickets** inconsistens, do fluxo. **Tickets** que estão tudo certo, devem ser enviados para um **Message Broker** para que eles possam ser validados para o setor de **Business** da empresa.
 
 ### Solução
 
-  O nosso fluxo tem como premissa, puxar todos **Tickets** que estão em uma fila do **SQS (all-tickets)** através de um **Worker**. O **Worker** fará uma pré validação de cada um, e salvar eles em um banco de dados, que por ter um fluxo gigante de informações, e os **Tickets** não tem relacionamento entre eles, foi escolhido o **DynamoDB**, para atender essa demanda. Feito devidas validações iniciais dos **Tickets**, teremos 3 projetos na outra ponta da arquitetura, que são **Workers**, que irão buscar os **Tickets** no **DynamoDB**, fazer um tratamento especial para cada **Ticket** correspondente para cada cinema, e enviar para outras filas do **SQS (constellation-ticket, crimsonfleet-ticket e ryujin-ticket)**. Essa arquitetura contém 6 projetos; todos eles são microservice. 
+  O nosso fluxo tem como premissa, puxar todos **Tickets** que estão em uma fila do **SQS (all-tickets)** através de um **Worker**. O **Worker de pré validação** fará uma pré validação de cada um, e salvar eles em um banco de dados, por meio de uma API Rest. Esse fluxo lida com payloads grandes e com auto volumetria. Os **Tickets** não tem relacionamento entre eles, foi escolhido então **DynamoDB** um banco NoSQL, escalável para atender essa demanda. Feito devidas validações iniciais dos **Tickets**, teremos 3 projetos na outra ponta da arquitetura, que são **Workers**, que irão buscar os **Tickets** no **DynamoDB**, fazer um tratamento especial para cada **Ticket** correspondente para cada cinema, e enviar para outras filas do **SQS (constellation-ticket, crimsonfleet-ticket e ryujin-ticket)**. Essa arquitetura contém 6 projetos; todos eles são microservice. 
 
 #### Tecnologias usadas
 
-  * Java
-  * Spring
-  * Docker
-  * GitHub Actions
-  * Terraform
-  * AWS
+  * [Java](https://dev.java/)
+  * [Spring](https://spring.io/docs)
+  * [Docker](https://docs.docker.com/)
+  * [GitHub Actions](https://docs.github.com/en/actions)
+  * [Terraform](https://developer.hashicorp.com/terraform/docs)
+  * [AWS](https://docs.aws.amazon.com/)
+  * [LocalStack](https://docs.localstack.cloud/)
 
-#### [Primeiro Projeto]()
+#### [Primeiro Projeto](https://github.com/andre4j/tickets-flow-spring-microservice-worker-1)
 
  Esse projeto consiste em fazer toda a regra de negócio anterior, do qual o time não tem conhecimento. Aqui, simulamos um **Worker** que cria todo o **Ticket** e envia para uma fila do **SQS (all-tickets)**. 
 
@@ -37,7 +43,7 @@
 
   > Work in progress...
 
-  Esse projeto é um **Worker** que consiste em fazer uma validação inicial da estrutura dos **Tickets**, que está alocado no **SQS (all-tickets)** e fazer uma separação de **Ticket** de cada cinema, e enviar para uma **API**, em sua respectiva rota, para que seja salvo consequetemente em suas tabelas.
+  Esse projeto é um **Worker de pré validação** consiste em fazer uma validação inicial da estrutura dos **Tickets**, que está alocado no **SQS (all-tickets)** e fazer uma separação de **Ticket** de cada cinema, e enviar para uma **API**, em sua respectiva rota, para que seja salvo consequetemente em suas tabelas.
 
 ---
 
